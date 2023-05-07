@@ -1,44 +1,17 @@
-# Shared Stats:
-class Stats:
-    def __init__(self, dmgmult, critchance):
-        self.dmgmult = dmgmult
-        self.critchance = critchance
-    # HP
-    # damage multiplier
-    # crit chance
-
-
-class Character:
-    def __init__(self, hp, name):
+import random
+#Troll Class (self, name, health, damage multiplier, critical chance)
+class Troll:
+    def __init__(self, name, health, dmg_mult, crit_chance):
         self.name = name
-        self.hp = hp
-        self.stats = Stats(0, 0)
-        
-     
-#     def __init__(self, name,):
-#             self.name = name
-#             self.stats = Stats(0, 0, 0)
-    def attack1(self, damage):
-        self.damage = damage
-
-    # def set(self, hp, dmgmult, critchance):
-    #     self.hp = hp
-    #     self.dmgmult = dmgmult
-    #     self.critchance = critchance
-
+        self.health = health
+        self.dmg_mult = dmg_mult
+        self.crit_chance = crit_chance
     def attack(self, other):
-        print(f'{self.name} does attack 1 at {other.name}')
-        Character.attack1.damage = 10 * (self.stats[0])
-        print(f'{other.name} takes {Character.attack1.damage} Damage')
-        
-
-    # def battle(self, other):
-         
-    #     print(f'dealing {Character.attack.damage} damage')
-
-    
-            
-    # def attack2(self, dmg):
+        damage = random.randint(10, 20) * self.dmg_mult
+        print(f'{self.name} Attacks {other.name} and does {damage} damage')
+        return damage
+        # damage = 10 * self.dmg_mult
+# def attack2(self, dmg):
     #     pass
 
         # Def Basic Attack 1
@@ -54,8 +27,23 @@ class Character:
         # print("troll roared, preparing to fight harder")
         # priint()
 
+        
 # Adventurer Class(Self, HP (60), Damage multiplier, crit chance)
-    # Def Basic Attack 1 - Basic Attack
+    
+class Adventurer:
+    def __init__(self, name, health, dmg_mult, crit_chance):
+        self.name = name
+        self.health = health
+        self.dmg_mult = dmg_mult
+        self.crit_chance = crit_chance
+    def attack(self, other):
+        damage = random.randint(10, 20) * self.dmg_mult
+        print(f'{self.name} Attacks {other.name} and does {damage} damage')
+        return damage
+        # damage = 10 * self.dmg_mult
+
+
+# Def Basic Attack 1 - Basic Attack
     # print ("adventurer attacked the troll")
 
     # Def Attack 2 - Damage Over time (if applicable) 
@@ -67,4 +55,15 @@ class Character:
 
     # Def Healing Potion
     # Print('Adventurer Drank potion of healing, revitalising them))
+        
+
+    # def battle(self, other):
+         
+    #     print(f'dealing {Character.attack.damage} damage')
+
+    
+            
+    
+
+
 

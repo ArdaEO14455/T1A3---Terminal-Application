@@ -1,6 +1,7 @@
 # Fight The Troll
 import random
 import classes
+import time
 
 #Start with Introduction + Ask for Character Name
 # While Loop to create back and forth between troll and adventurer until one reaches 0 hp
@@ -17,15 +18,20 @@ import classes
 
 
 
-troll = classes.Character('Troll', 100)
-troll.stats = (2, 0.1) 
-
+troll = classes.Troll('Troll', 100, 2, 0.2)
+adventurer = classes.Adventurer(input ('What is your Adventurer name?' ), 100, 1, 0.2)
+  
 print(troll.__dict__)
 
-adventurer = classes.Character(
-    input ('What is your Adventurer name?' ), 100) 
-adventurer.stats = (1, 0.1)
 print (adventurer.__dict__)
 
-troll.attack(adventurer)
-print (adventurer.__dict__)
+while troll.health >= 0 and adventurer.health >= 0:
+    troll.attack(adventurer)
+    time.sleep(1)
+# Time Module found on https://realpython.com/python-sleep/
+    adventurer.attack(troll)
+    if troll.health <= 0:
+        print('You have defeated the Troll, Congratulations!')
+    elif adventurer.health <= 0:
+        print('You have been defeated... Care to try again?')
+
