@@ -26,11 +26,16 @@ print(troll.__dict__)
 print (adventurer.__dict__)
 
 while troll.health > 0 and adventurer.health > 0:
+    #Troll Turn
     troll.random_action()
     time.sleep(1)
+    #Adventurer Turn
     adventurer.choose_move()
+    time.sleep(1)
 # Time Module found on https://realpython.com/python-sleep/
-    # adventurer.attack(troll)
+
+
+# Conclusion
     if troll.health <= 0:
         print('You have defeated the Troll, Congratulations!')
     elif adventurer.health <= 0:
