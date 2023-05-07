@@ -3,41 +3,47 @@ import random
 import classes
 import time
 
-#Start with Introduction + Ask for Character Name
-# While Loop to create back and forth between troll and adventurer until one reaches 0 hp
-# While Troll HP > 0 and Adventurer HP > 0:
-    # Adventurer Turn
-    # Print Action
-    # Print Result
-    # 1s delay
-
-    # Troll Turn
-    # Print Action
-    # Print Result
-    # 1s delay
-
-
-
 troll = classes.Troll('Troll', 100, 2, 0.2)
 adventurer = classes.Adventurer(input ('What is your Adventurer name?' ), 100, 1, 0.2)
   
-print(troll.__dict__)
-
-print (adventurer.__dict__)
 
 while troll.health > 0 and adventurer.health > 0:
     #Troll Turn
-    troll.random_action()
+    troll_damage = troll.random_action()
+    adventurer.health -= troll_damage
     time.sleep(1)
-    #Adventurer Turn
-    adventurer.choose_move()
+    if adventurer.health > 0:
+        print(f'{adventurer.name} HP: {adventurer.health} ')
+    else:
+        break
+     #Adventurer Turn
+    print('What do you want to do?')
+    print('1. Attack')
+    print('2. Heal Yourself')
+    print('3. Retreat')
+    choose_move = input()
+    if choose_move == '1':
+        adventurer_damage = adventurer.attack()
+        troll.health -= adventurer_damage
+    elif choose_move == '2':
+        adventurer_healing = adventurer.healing()
+        adventurer.health += adventurer_healing
+        print(f'{adventurer.name} HP: {adventurer.health} ')
+    else:
+        break
     time.sleep(1)
+    if troll.health > 0:
+        print(f'Troll HP: {troll.health}')
+    else:
+        print('You retreat to a nearby town to tend to your wounds')
+        break
+
 # Time Module found on https://realpython.com/python-sleep/
 
 
 # Conclusion
-    if troll.health <= 0:
-        print('You have defeated the Troll, Congratulations!')
-    elif adventurer.health <= 0:
-        print('You have been defeated... Care to try again?')
+if troll.health <= 0:
+    print('You have defeated the Troll, Congratulations!')
+elif adventurer.health <= 0:
+    print('You have been defeated... Care to try again?')
 
