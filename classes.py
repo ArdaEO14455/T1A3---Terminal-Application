@@ -15,12 +15,24 @@ class Troll:
     
         if move == 'Throw Stone':
             damage = random.randint(10,20) * self.dmg_mult
+            if random.random(0,1) < self.crit_chance:
+                damage *= 1.8
+                print('Critical Hit!)')
+                time.sleep(1)
             print(f'{self.name} Threw a stone, inflicting {damage} damage')
         elif move == 'Ground-Slam':
             damage = random.randint(10,20) * self.dmg_mult
+            if random.random(0,1) < self.crit_chance:
+                damage *= 1.8
+                print('Critical Hit!)')
+                time.sleep(1)
             print(f'{self.name} Slammed the ground around them, Upheaving the earth beneath and dealing {damage} damage')
         elif move == 'Kick':
             damage = random.randint(10,20) * self.dmg_mult
+            if random.random(0,1) < self.crit_chance:
+                damage *= 1.8
+                print('Critical Hit!)')
+                time.sleep(1)
             print(f'{self.name} Swings his tree-trunk leg at you, inflicting {damage} damage')
 
         return damage
@@ -67,7 +79,7 @@ class Adventurer:
     
     def attack(self):
         print('How would you like to attack?')
-        time.sleep(1)
+        time.sleep(1.5)
         print('1. Cast Fireball')
         print('2. Cast another Fireball')
         print('3. Cast Yeet-Fireball')
@@ -77,17 +89,27 @@ class Adventurer:
             print('I cast fireball')
             time.sleep(1)
             damage = random.randint(10,20) * self.dmg_mult
+            if random.random(0,1) < self.crit_chance:
+                damage *= 1.8
+                print('Critical Hit!)')
+                time.sleep(1)
             print(f'You inflict {damage} damage on your enemy')
             
         elif move == '2' :
-            damage = random.randint(15,30) * self.dmg_mult
             print(' Oh look, another spell slot. I cast fireball')
+            damage = random.randint(15,30) * self.dmg_mult
+            if random.random(0,1) < self.crit_chance:
+                damage *= 1.8
+                print('Critical Hit!)')
             time.sleep(1)
             print(f'Your enemy is engulfed in flame, dealing {damage} damage on your enemy')
             
         elif move == '3' :
-            damage = random.randint(40,60) * self.dmg_mult
             print(' I didnt ask how big the room is, I said, I yeet a big-ass fireball')
+            damage = random.randint(40,60) * self.dmg_mult
+            if random.random(0,1) < self.crit_chance:
+                damage *= 1.8
+                print('Critical Hit!)')
             time.sleep(1)
             print(f'you deal {damage} damage to your enemy. There is no sign remaining of your enemy')
         return damage
@@ -95,8 +117,9 @@ class Adventurer:
 
 
     def healing (self):
-        healing = random.randint(40-60)
+        healing = random.randint(40,60)
         print(f'You heal yourself for {healing} health')
+        time.sleep(1)
         return healing
         # damage = 10 * self.dmg_mult
 

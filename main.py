@@ -11,7 +11,7 @@ while troll.health > 0 and adventurer.health > 0:
     #Troll Turn
     troll_damage = troll.random_action()
     adventurer.health -= troll_damage
-    time.sleep(1)
+    time.sleep(2)
     if adventurer.health > 0:
         print(f'{adventurer.name} HP: {adventurer.health} ')
     else:
@@ -30,12 +30,13 @@ while troll.health > 0 and adventurer.health > 0:
         adventurer.health += adventurer_healing
         print(f'{adventurer.name} HP: {adventurer.health} ')
     else:
+        print('You retreat to a nearby town to tend to your wounds')
         break
     time.sleep(1)
     if troll.health > 0:
         print(f'Troll HP: {troll.health}')
+        time.sleep(1)
     else:
-        print('You retreat to a nearby town to tend to your wounds')
         break
 
 # Time Module found on https://realpython.com/python-sleep/
