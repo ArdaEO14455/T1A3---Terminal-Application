@@ -6,10 +6,38 @@ class Troll:
         self.health = health
         self.dmg_mult = dmg_mult
         self.crit_chance = crit_chance
-    def attack(self, other):
-        damage = random.randint(10, 20) * self.dmg_mult
-        print(f'{self.name} Attacks {other.name} and does {damage} damage')
+
+    #Troll Move Randomizer
+    def random_action(self):
+        move_set = ['Throw Stone', 'Kick', 'Ground-Slam']
+        move = random.choice(move_set)
+    
+    # def attack(self, move):
+        if move == 'Throw Stone':
+            damage = random.randint(10,20) * self.dmg_mult
+            print(f'{self.name} Threw a stone, inflicting {damage} damage')
+        elif move == 'Ground-Slam':
+            damage = random.randint(10,20) * self.dmg_mult
+            print(f'{self.name} Slammed the ground around them, Upheaving the earth beneath and dealing {damage} damage')
+        elif move == 'Kick':
+            damage = random.randint(10,20) * self.dmg_mult
+            print(f'{self.name} Swings his tree-trunk leg at you, inflicting {damage} damage')
+
         return damage
+    
+
+
+    # def attack2(self, other):
+    #     damage = random.randint(10, 20) * self.dmg_mult
+    #     print(f'{self.name} Attack2 {other.name} and does {damage} damage')
+    #     return damage
+    
+    # def attack3(self, other):
+    #     damage = random.randint(10, 20) * self.dmg_mult
+    #     print(f'{self.name} Attack3 {other.name} and does {damage} damage')
+    #     return damage
+    
+    # def moves [attack1, attack2, attack3]
         # damage = 10 * self.dmg_mult
 # def attack2(self, dmg):
     #     pass
@@ -36,10 +64,13 @@ class Adventurer:
         self.health = health
         self.dmg_mult = dmg_mult
         self.crit_chance = crit_chance
+    
     def attack(self, other):
         damage = random.randint(10, 20) * self.dmg_mult
         print(f'{self.name} Attacks {other.name} and does {damage} damage')
         return damage
+    
+   
         # damage = 10 * self.dmg_mult
 
 
