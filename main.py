@@ -28,6 +28,7 @@ print (adventurer.__dict__)
 while troll.health > 0 and adventurer.health > 0:
     troll.random_action()
     time.sleep(1)
+    adventurer.choose_move()
 # Time Module found on https://realpython.com/python-sleep/
     # adventurer.attack(troll)
     if troll.health <= 0:
