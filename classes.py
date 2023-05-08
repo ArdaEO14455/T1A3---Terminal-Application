@@ -82,7 +82,8 @@ class Adventurer:
         print('1. Cast Fireball: 65 - 80 Fire Damage')
         print('2. Cast Lightning Tendrils: 60 - 90 Lightning Damage')
         print('3. Life Drain: 60 - 80 Dark Magic Damage')
-        damage = 0
+        global move
+        global damage
         move = input()
         if move == '1' :
             print(f'{self.name} Casts fireball, englufing their enemy in flames')
@@ -95,51 +96,37 @@ class Adventurer:
         elif move == '3' :
             print(f'Channeling more desperate, darker methods, {self.name} shaves off the life of their enemy, adding to their own')
             damage = random.randint(60,80) * self.dmg_mult
+              
+           
             
         
         if random.random() < self.crit_chance:
                 damage *= 1.8
                 print('Critical Hit!')
         time.sleep(1.5)
+        
         print(f'You deal {int(damage)} damage')
         time.sleep(1)
+        
+        return int(damage)
+        
 
+    def leech(self):
         if move == '3':
             healing = damage * 0.2
             print(f'You heal yourself for {int(healing)} health')
-            return int(healing)
+        else:
+            healing = 0
+        return int(healing)
             
 
-        return int(damage)
-        
-    
 
-
-    def healing (self):
+    def selfheal (self):
         healing = random.randint(40,60)
         print(f'You heal yourself for {healing} health')
         time.sleep(1)
         return healing
         
-
-
-# Def Basic Attack 1 - Basic Attack
-    # print ("adventurer attacked the troll")
-
-    # Def Attack 2 - Damage Over time (if applicable) 
-    # print ("adventurer applied DoT to the troll")
-
-    # Def Buff (potion of strength)
-    # Print('Adventurer Drank potion of strength)
-    # Print('Your attacks hit harder for two turns)
-
-    # Def Healing Potion
-    # Print('Adventurer Drank potion of healing, revitalising them))
-        
-
-    # def battle(self, other):
-         
-    #     print(f'dealing {Character.attack.damage} damage')
 
     
             

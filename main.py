@@ -1,6 +1,7 @@
 # Fight The Troll
 import random
 import classes
+from classes import *
 import time
 
 troll = classes.Troll('The Cave Troll', 400, 1, 0.10, 0)
@@ -18,7 +19,7 @@ while troll.health > 0 and adventurer.health > 0:
     # Roar
     if random.random() < 0.15 and troll.buff_counter == 0:
         print("The Troll Roars, preparing to crush it's foe")
-        troll.buff_counter = 2
+        troll.buff_counter = 3
         time.sleep(1.5)
 
     if troll.buff_counter > 0:
@@ -43,7 +44,7 @@ while troll.health > 0 and adventurer.health > 0:
     print('What do you want to do?')
     print('1. Attack')
     print('2. Drink Potion of Healing')
-    print('3. Cast Potency of Mana: Lasts 2 Turns')
+    print('3. Cast Potency of Mana: Lasts 3 Turns')
     print('4. Retreat')
     
     # Buff Counter
@@ -56,22 +57,23 @@ while troll.health > 0 and adventurer.health > 0:
         adventurer.dmg_mult = 1
         adventurer.crit_chance = 0.2
     
-    
     choose_move = input()
 
     if choose_move == '1':
         adventurer_damage = adventurer.attack()
         troll.health -= adventurer_damage
-    elif choose_move == '2':
-        adventurer_healing = adventurer.healing()
+        adventurer_healing = adventurer.leech()
         adventurer.health += adventurer_healing
-        print(f'{adventurer.name} HP: {adventurer.health} ')
+    elif choose_move == '2':
+        adventurer_healing = adventurer.selfheal()
+        adventurer.health += adventurer_healing
     elif choose_move == '3':
         print('Your mana surges, temporarily amplifying the effects of your atacks ')
-        adventurer.buff_counter = 2
+        adventurer.buff_counter = 3
     else:
         print('You retreat to a nearby town to tend to your wounds')
         break
+    
     time.sleep(1)
     
     
