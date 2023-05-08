@@ -42,13 +42,7 @@ while troll.health > 0 and adventurer.health > 0:
         break
     time.sleep(2)
 
-     #Adventurer Turn
-    print('What do you want to do?')
-    print('1. Attack')
-    print('2. Drink Potion of Healing')
-    print('3. Cast Potency of Mana: Lasts 3 Turns')
-    print('4. Retreat')
-    
+#Adventurer Turn
     # Buff Counter
     if adventurer.buff_counter > 0:
         adventurer.dmg_mult = 1.3
@@ -58,11 +52,18 @@ while troll.health > 0 and adventurer.health > 0:
     else:
         adventurer.dmg_mult = 1
         adventurer.crit_chance = 0.2
+
+    # Move Options    
+    print('What do you want to do?')
+    print('1. Attack')
+    print('2. Drink Potion of Healing')
+    print('3. Cast Potency of Mana: Lasts 3 Turns')
+    print('4. Retreat')
+    
     
     #Move Selector
     choose_move = input()
-
-    #Attack Move
+    #Attack - Access to Move-Set 
     if choose_move == '1':
         adventurer_damage = adventurer.attack()
         troll.health -= adventurer_damage
