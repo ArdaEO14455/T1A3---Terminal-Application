@@ -1,6 +1,6 @@
 import random
 import time
-#Troll Class (self, name, health, damage multiplier, critical chance)
+
 class Troll:
     def __init__(self, name, health, dmg_mult, crit_chance, buff_counter):
         self.name = name
@@ -35,39 +35,6 @@ class Troll:
     
     
     
-
-
-    # def attack2(self, other):
-    #     damage = random.randint(10, 20) * self.dmg_mult
-    #     print(f'{self.name} Attack2 {other.name} and does {damage} damage')
-    #     return damage
-    
-    # def attack3(self, other):
-    #     damage = random.randint(10, 20) * self.dmg_mult
-    #     print(f'{self.name} Attack3 {other.name} and does {damage} damage')
-    #     return damage
-    
-    # def moves [attack1, attack2, attack3]
-        # damage = 10 * self.dmg_mult
-# def attack2(self, dmg):
-    #     pass
-
-        # Def Basic Attack 1
-        # 15 dmg
-        # print("troll did attack 1 at the Adventurer")
-    
-        # Def ttack 2 - Damage Over time (if applicable)
-        # 5 dmg per turn
-        # print("troll applied attack 2 DoT at the Adventurer")
-    
-        # Def Buff (Roar)
-        # + x to damage multiplier, + x% to crit chance for x turns
-        # print("troll roared, preparing to fight harder")
-        # priint()
-
-        
-# Adventurer Class(Self, HP (60), Damage multiplier, crit chance)
-    
 class Adventurer:
     def __init__(self, name, health, dmg_mult, crit_chance, buff_counter):
         self.name = name
@@ -79,9 +46,9 @@ class Adventurer:
     def attack(self):
         print('How would you like to attack?')
         time.sleep(1.5)
-        print('1. Cast Fireball: 65 - 80 Fire Damage')
-        print('2. Cast Lightning Tendrils: 60 - 90 Lightning Damage')
-        print('3. Life Drain: 60 - 80 Dark Magic Damage')
+        print('1. Cast Fireball: 65 - 80 Base Fire Damage')
+        print('2. Cast Lightning Tendrils: 60 - 90 Base Lightning Damage')
+        print('3. Cast Life Drain: 60 - 80 Base Dark Magic Damage, Heals Self For 12 - 16 HP')
         global move
         global damage
         move = input()

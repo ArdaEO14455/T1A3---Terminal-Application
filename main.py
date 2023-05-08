@@ -1,7 +1,9 @@
 # Fight The Troll
+
+#Module Imports
 import random
 import classes
-from classes import *
+# from classes import *
 import time
 
 troll = classes.Troll('The Cave Troll', 400, 1, 0.10, 0)
@@ -18,7 +20,7 @@ while troll.health > 0 and adventurer.health > 0:
 
     # Roar
     if random.random() < 0.15 and troll.buff_counter == 0:
-        print("The Troll Roars, preparing to crush it's foe")
+        print("The Troll Roars, preparing to crush it's foe (Buff Lasts 3 Turns)")
         troll.buff_counter = 3
         time.sleep(1.5)
 
@@ -57,19 +59,24 @@ while troll.health > 0 and adventurer.health > 0:
         adventurer.dmg_mult = 1
         adventurer.crit_chance = 0.2
     
+    #Move Selector
     choose_move = input()
 
+    #Attack Move
     if choose_move == '1':
         adventurer_damage = adventurer.attack()
         troll.health -= adventurer_damage
         adventurer_healing = adventurer.leech()
         adventurer.health += adventurer_healing
+    #Healing Potion
     elif choose_move == '2':
         adventurer_healing = adventurer.selfheal()
         adventurer.health += adventurer_healing
+    #Buff
     elif choose_move == '3':
         print('Your mana surges, temporarily amplifying the effects of your atacks ')
         adventurer.buff_counter = 3
+    #Retreat / Exit
     else:
         print('You retreat to a nearby town to tend to your wounds')
         break
@@ -88,7 +95,7 @@ while troll.health > 0 and adventurer.health > 0:
 # Time Module found on https://realpython.com/python-sleep/
 
 
-# Conclusion
+# Game Conclusion
 if troll.health <= 0:
     print('You have defeated the Troll, Congratulations!')
 elif adventurer.health <= 0:
