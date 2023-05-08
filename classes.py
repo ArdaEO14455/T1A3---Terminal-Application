@@ -79,41 +79,39 @@ class Adventurer:
     def attack(self):
         print('How would you like to attack?')
         time.sleep(1.5)
-        print('1. Cast Fireball')
-        print('2. Cast Lightning Tendrils')
-        print('3. Life Drain')
+        print('1. Cast Fireball: 65 - 80 Fire Damage')
+        print('2. Cast Lightning Tendrils: 60 - 90 Lightning Damage')
+        print('3. Life Drain: 60 - 80 Dark Magic Damage')
         damage = 0
         move = input()
         if move == '1' :
-            print(f'{self.name} sends a fireball hurling towards their enemy')
-            time.sleep(1)
+            print(f'{self.name} Casts fireball, englufing their enemy in flames')
             damage = random.randint(65,80) * self.dmg_mult
             
         elif move == '2' :
             print('Lighting reaches down from the heavens, broadly striking the area around your enemy')
-            time.sleep(1)
             damage = random.randint(60,90) * self.dmg_mult
             
         elif move == '3' :
             print(f'Channeling more desperate, darker methods, {self.name} shaves off the life of their enemy, adding to their own')
-            time.sleep(2)
             damage = random.randint(60,80) * self.dmg_mult
             
         
         if random.random() < self.crit_chance:
                 damage *= 1.8
                 print('Critical Hit!')
-                time.sleep(1)
-        
+        time.sleep(1.5)
         print(f'You deal {int(damage)} damage')
         time.sleep(1)
 
         if move == '3':
             healing = damage * 0.2
             print(f'You heal yourself for {int(healing)} health')
+            return int(healing)
+            
 
         return int(damage)
-        return int(healing)
+        
     
 
 

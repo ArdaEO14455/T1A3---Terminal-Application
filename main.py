@@ -3,7 +3,7 @@ import random
 import classes
 import time
 
-troll = classes.Troll('The Cave Troll', 400, 1, 0.2, 0)
+troll = classes.Troll('The Cave Troll', 400, 1, 0.10, 0)
 adventurer = classes.Adventurer(input ('What is your Adventurer name?' ), 150, 1, 0.2, 0)
 print(f'{adventurer.name}, Your encounter begins, fighting a Troll in the wild!') 
 time.sleep(1)
@@ -16,9 +16,10 @@ while troll.health > 0 and adventurer.health > 0:
     time.sleep(2)
 
     # Roar
-    if random.random() < 0.90 and troll.buff_counter == 0:
+    if random.random() < 0.15 and troll.buff_counter == 0:
         print("The Troll Roars, preparing to crush it's foe")
         troll.buff_counter = 2
+        time.sleep(1.5)
 
     if troll.buff_counter > 0:
         troll.dmg_mult = 1.3
@@ -29,11 +30,11 @@ while troll.health > 0 and adventurer.health > 0:
         troll.dmg_mult = 1
         troll.crit_chance = 0.2
 
-    
-
+    #Health Recap 
     
     if adventurer.health > 0:
         print(f'{adventurer.name} HP: {adventurer.health} ')
+        print(f'Troll HP: {troll.health}')
     else:
         break
     time.sleep(2)
@@ -42,7 +43,7 @@ while troll.health > 0 and adventurer.health > 0:
     print('What do you want to do?')
     print('1. Attack')
     print('2. Drink Potion of Healing')
-    print('3. Cast Potency of Mana')
+    print('3. Cast Potency of Mana: Lasts 2 Turns')
     print('4. Retreat')
     
     # Buff Counter
@@ -74,8 +75,10 @@ while troll.health > 0 and adventurer.health > 0:
     time.sleep(1)
     
     
+    #Health Recap
     if troll.health > 0:
         print(f'Troll HP: {troll.health}')
+        print(f'Adventurer HP:{adventurer.health}')
         time.sleep(1)
     else:
         break
