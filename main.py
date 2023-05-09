@@ -54,7 +54,7 @@ while troll.health > 0 and adventurer.health > 0:
         adventurer.crit_chance = 0.2
 
     # Move Options    
-    print('What do you want to do?')
+    print('What do you want to do? (Input selected option number)')
     print('1. Attack')
     print('2. Drink Potion of Healing')
     print('3. Cast Potency of Mana: Lasts 3 Turns')
@@ -62,13 +62,17 @@ while troll.health > 0 and adventurer.health > 0:
     
     
     #Move Selector
+    
     choose_move = input()
     #Attack - Access to Move-Set 
     if choose_move == '1':
-        adventurer_damage = adventurer.attack()
-        troll.health -= adventurer_damage
-        adventurer_healing = adventurer.leech()
-        adventurer.health += adventurer_healing
+        try:
+            adventurer_damage = adventurer.attack()
+            troll.health -= adventurer_damage
+            adventurer_healing = adventurer.leech()
+            adventurer.health += adventurer_healing
+        except (NameError, TypeError):
+            print("There was a mistake in your casting incantation, causing it to fizzle out")
     #Healing Potion
     elif choose_move == '2':
         adventurer_healing = adventurer.selfheal()

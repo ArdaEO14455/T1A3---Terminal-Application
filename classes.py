@@ -28,10 +28,12 @@ class Troll:
         
     #Critical Chance Functionality 
         if random.random() < self.crit_chance:
+                time.sleep(1)
                 damage *= 1.8
                 print('Critical Hit!')
-                time.sleep(1)
+                
     #Damage Output and Return
+        time.sleep(1)
         print(f'{self.name} deals {int(damage)} damage')
         return int(damage)
     
@@ -47,7 +49,7 @@ class Adventurer:
     
     #Attack Function    
     def attack(self):
-        print('How would you like to attack?')
+        print('How would you like to attack?(Input selected option number)')
         time.sleep(1.5)
         print('1. Cast Fireball: 65 - 80 Base Fire Damage')
         print('2. Cast Lightning Tendrils: 60 - 90 Base Lightning Damage')
