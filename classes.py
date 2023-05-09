@@ -11,6 +11,11 @@ class Troll:
         self.crit_chance = crit_chance
         self.buff_counter = buff_counter
 
+    #Troll Turn
+
+    
+    
+
     #Troll Move Randomizer
     def random_action(self):
         move_set = ['Throw Stone', 'Kick', 'Ground-Slam']
@@ -46,6 +51,34 @@ class Adventurer:
         self.dmg_mult = dmg_mult
         self.crit_chance = crit_chance
         self.buff_counter = buff_counter
+
+    def move_select(self):
+        # Move Options    
+        print('What do you want to do? (Input selected option number)')
+        print('1. Attack')
+        print('2. Drink Potion of Healing')
+        print('3. Cast Potency of Mana: Lasts 3 Turns')
+    
+    #Move Selector
+        try:
+            choose_move = input()
+        #Attack - Access to Move-Set 
+            if choose_move == '1':
+                return choose_move                   
+        #Healing Potion
+            elif choose_move == '2':
+                return choose_move
+        #Buff
+            elif choose_move == '3':
+                print('Your mana surges, temporarily amplifying the effects of your atacks ')
+                return choose_move
+            
+            else: raise Exception
+            
+        except Exception:
+            print('Invalid Option')
+            time.sleep(1)
+        
     
     #Attack Function    
     def attack(self):
@@ -56,22 +89,26 @@ class Adventurer:
         print('3. Cast Life Drain: 60 - 80 Base Dark Magic Damage, Heals Self For 12 - 16 HP')
         global move
         global damage
-        move = input()
-        #Attack Moves
-        if move == '1' :
-            print(f'{self.name} Casts fireball, englufing their enemy in flames')
-            damage = random.randint(65,80) * self.dmg_mult
-            
-        elif move == '2' :
-            print('Lighting reaches down from the heavens, broadly striking the area around your enemy')
-            damage = random.randint(60,90) * self.dmg_mult
-            
-        elif move == '3' :
-            print(f'Channeling more desperate, darker methods, {self.name} shaves off the life of their enemy, adding to their own')
-            damage = random.randint(60,80) * self.dmg_mult
-              
-           
-            
+        try:
+            move = input()
+            #Attack Moves
+            if move == '1' :
+                print(f'{self.name} Casts fireball, englufing their enemy in flames')
+                damage = random.randint(65,80) * self.dmg_mult
+                
+            elif move == '2' :
+                print('Lighting reaches down from the heavens, broadly striking the area around your enemy')
+                damage = random.randint(60,90) * self.dmg_mult
+                
+            elif move == '3' :
+                print(f'Channeling more desperate, darker methods, {self.name} shaves off the life of their enemy, adding to their own')
+                damage = random.randint(60,80) * self.dmg_mult
+            else: raise Exception
+
+        except (Exception):
+                    print("There was a mistake in your casting incantation, causing it to fizzle out")
+                    time.sleep(1)
+          
     #Critical Chance Functionality
         if random.random() < self.crit_chance:
                 damage *= 1.8
