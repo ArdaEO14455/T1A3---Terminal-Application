@@ -23,6 +23,7 @@ while troll.health > 0 and adventurer.health > 0:
         print("The Troll Roars, preparing to crush it's foe (Buff Lasts 3 Turns)")
         troll.buff_counter = 3
         time.sleep(1.5)
+    
 
     if troll.buff_counter > 0:
         troll.dmg_mult = 1.3
@@ -33,6 +34,8 @@ while troll.health > 0 and adventurer.health > 0:
         troll.dmg_mult = 1
         troll.crit_chance = 0.2
 
+    
+
     #Health Recap 
     
     if adventurer.health > 0:
@@ -42,7 +45,7 @@ while troll.health > 0 and adventurer.health > 0:
         break
     time.sleep(2)
 
-#Adventurer Turn
+    #Adventurer Turn
     # Buff Counter
     if adventurer.buff_counter > 0:
         adventurer.dmg_mult = 1.3
@@ -62,31 +65,36 @@ while troll.health > 0 and adventurer.health > 0:
     
     
     #Move Selector
-    
-    choose_move = input()
-    #Attack - Access to Move-Set 
-    if choose_move == '1':
-        try:
-            adventurer_damage = adventurer.attack()
-            troll.health -= adventurer_damage
-            adventurer_healing = adventurer.leech()
+    try:
+        choose_move = input()
+        #Attack - Access to Move-Set 
+        if choose_move == '1':
+            try:
+                adventurer_damage = adventurer.attack()
+                troll.health -= adventurer_damage
+                adventurer_healing = adventurer.leech()
+                adventurer.health += adventurer_healing
+            except (NameError, TypeError, Exception):
+                print("There was a mistake in your casting incantation, causing it to fizzle out")
+                time.sleep(1)
+        #Healing Potion
+        elif choose_move == '2':
+            adventurer_healing = adventurer.selfheal()
             adventurer.health += adventurer_healing
-        except (NameError, TypeError):
-            print("There was a mistake in your casting incantation, causing it to fizzle out")
-    #Healing Potion
-    elif choose_move == '2':
-        adventurer_healing = adventurer.selfheal()
-        adventurer.health += adventurer_healing
-    #Buff
-    elif choose_move == '3':
-        print('Your mana surges, temporarily amplifying the effects of your atacks ')
-        adventurer.buff_counter = 3
-    #Retreat / Exit
-    else:
-        print('You retreat to a nearby town to tend to your wounds')
-        break
-    
-    time.sleep(1)
+        #Buff
+        elif choose_move == '3':
+            print('Your mana surges, temporarily amplifying the effects of your atacks ')
+            adventurer.buff_counter = 3
+        #Retreat / Exit
+        elif choose_move == '4':
+            print('You retreat to a nearby town to tend to your wounds')
+            break
+        
+        else: raise Exception
+        
+    except Exception:
+        print('Sorry, that is not a valid action')
+        time.sleep(1)
     
     
     #Health Recap

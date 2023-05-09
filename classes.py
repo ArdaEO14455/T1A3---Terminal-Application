@@ -13,7 +13,7 @@ class Troll:
 
     #Troll Move Randomizer
     def random_action(self):
-        move_set = ['Throw Stone', 'Kick', 'Ground-Slam',]
+        move_set = ['Throw Stone', 'Kick', 'Ground-Slam']
         move = random.choice(move_set)
     #Attack Move-Set
         if move == 'Throw Stone':
