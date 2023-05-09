@@ -18,12 +18,14 @@ while troll.health > 0 and adventurer.health > 0:
     adventurer.health -= troll_damage
     time.sleep(2)
 
-    # Roar
+    # Roar & Self Heal
     if random.random() < 0.15 and troll.buff_counter == 0:
         print("The Troll Roars, preparing to crush it's foe (Buff Lasts 3 Turns)")
         troll.buff_counter = 3
         time.sleep(1.5)
-    
+    elif random.random() < 0.1 and troll.buff_counter > 0:
+        troll.health += 50
+        print('The troll devours a nearby morsel, restoring some of its health')
 
     if troll.buff_counter > 0:
         troll.dmg_mult = 1.3
