@@ -1,6 +1,6 @@
 #Imported Modules
 import random
-import time
+from time import sleep
 
 
 #Troll Class
@@ -30,15 +30,16 @@ class Troll:
         
     #Critical Chance Functionality 
         if random.random() < self.crit_chance:
-                time.sleep(1)
+                sleep(1)
                 damage *= 1.8
                 print('Critical Hit!')
                 
     #Damage Output and Return
-        time.sleep(1)
+        sleep(1)
         print(f'{self.name} deals {int(damage)} damage')
         return int(damage)
-    
+
+#Custom Errors
 class Invalid_Input_Error(Exception):
     pass
 
@@ -58,6 +59,7 @@ class Adventurer:
         print('1. Attack')
         print('2. Drink Potion of Healing')
         print('3. Cast Potency of Mana: Lasts 3 Turns')
+        print('4. Escape')
     
     #Move Selector
         try:
@@ -73,12 +75,14 @@ class Adventurer:
             elif choose_move == '3':
                 print('Your mana surges, temporarily amplifying the effects of your atacks ')
                 selected_move = 3
+            elif choose_move == '4':
+                selected_move = 4
         #Error for invalid option    
             else: raise Invalid_Input_Error
             
         except Invalid_Input_Error:
                 print('Invalid Option')
-                time.sleep(1)
+                sleep(1)
         finally:
             return selected_move
         
@@ -87,7 +91,7 @@ class Adventurer:
     #Attack Function    
     def attack(self):
         print('How would you like to attack?(Input selected option number)')
-        time.sleep(1.5)
+        sleep(1.5)
         print('1. Cast Fireball: 65 - 80 Base Fire Damage')
         print('2. Cast Lightning Tendrils: 60 - 90 Base Lightning Damage')
         print('3. Cast Life Drain: 60 - 80 Base Dark Magic Damage, Heals Self For 12 - 16 HP')
@@ -112,17 +116,17 @@ class Adventurer:
 
         except Invalid_Input_Error:
                 print("There was a mistake in your casting incantation, causing it to fizzle out")
-                time.sleep(1)
+                sleep(1)
           
     #Critical Chance Functionality
         if random.random() < self.crit_chance:
                 damage *= 1.8
                 print('Critical Hit!')
-        time.sleep(1.5)
+        sleep(1.5)
 
     #Damage Output and Return
         print(f'You deal {int(damage)} damage')
-        time.sleep(1)
+        sleep(1)
         return int(damage)
         
     #Life-steal function for Life-Drain move
@@ -139,12 +143,11 @@ class Adventurer:
     def selfheal (self):
         healing = random.randint(40,60)
         print(f'You heal yourself for {healing} health')
-        time.sleep(1)
+        sleep(1)
         return healing
 
+    def retreat(self):
+        print('You narrowly escape into the wilderness')
+        raise SystemExit
+     
 #Custom Errors
-
-
-
-
-

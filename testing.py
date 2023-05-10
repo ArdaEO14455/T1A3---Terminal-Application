@@ -20,6 +20,7 @@ def test_attack_select_raise_error(monkeypatch):
 
 
 
+
 # def test_double(monkeypatch):
 #     number_inputs = (StringIO('1234\n'))
 #     monkeypatch.setattr('sys.stdin', number_inputs)
