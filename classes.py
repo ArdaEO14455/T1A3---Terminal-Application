@@ -50,6 +50,8 @@ class Adventurer:
         self.dmg_mult = dmg_mult
         self.crit_chance = crit_chance
         self.buff_counter = buff_counter
+
+
 # Move Select
     def move_select(self):
         print('What do you want to do? (Input selected option number)')
@@ -62,20 +64,23 @@ class Adventurer:
             choose_move = input()
         #Attack - Access to Move-Set 
             if choose_move == '1':
-                return choose_move                   
+                selected_move = 1
+                                   
         #Healing Potion
             elif choose_move == '2':
-                return choose_move
+                selected_move = 2
         #Buff
             elif choose_move == '3':
                 print('Your mana surges, temporarily amplifying the effects of your atacks ')
-                return choose_move
+                selected_move = 3
         #Error for invalid option    
             else: raise Invalid_Input_Error
             
         except Invalid_Input_Error:
                 print('Invalid Option')
                 time.sleep(1)
+        finally:
+            return selected_move
         
 
 

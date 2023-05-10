@@ -49,15 +49,15 @@ while troll.health > 0 and adventurer.health > 0:
 
     selected_move = adventurer.move_select()
     try:
-        if selected_move == '1':
+        if selected_move == 1:
             adventurer_damage = adventurer.attack()
             troll.health -= adventurer_damage
             adventurer_healing = adventurer.leech()
             adventurer.health += adventurer_healing
-        elif selected_move == '2':
+        elif selected_move == 2:
             adventurer_healing = adventurer.selfheal()
             adventurer.health += adventurer_healing
-        elif selected_move == '3':
+        elif selected_move == 3:
             adventurer.buff_counter = 3
             time.sleep(1)
         else: 

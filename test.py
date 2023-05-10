@@ -4,18 +4,16 @@ from io import StringIO
 
 adventurer = Adventurer("arda", 1, 1, 1, 1)
 
-#Exception Raise Test - Invalid Input is given to move_select function
+#Exception Raise Test - Invalid Input is given to move_select function   
 def test_move_select_raise_error(monkeypatch):
-    move_input = (StringIO('5\n'))
+    move_input = (StringIO('2'))
     monkeypatch.setattr('sys.stdin', move_input)
     with pytest.raises(Exception):
         adventurer.move_select()
-       
 
-
-#Exception Raise Test - Invalid Input is given to attack() function - Fixed
+# Exception Raise Test - Invalid Input is given to attack() function - Fixed
 def test_attack_select_raise_error(monkeypatch):
-    move_input = (StringIO('5'))
+    move_input = (StringIO('2'))
     monkeypatch.setattr('sys.stdin', move_input)
     with pytest.raises(Exception):
         adventurer.attack()
