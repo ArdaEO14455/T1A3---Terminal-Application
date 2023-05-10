@@ -3,7 +3,6 @@
 #Module Imports
 import random
 import classes
-# from classes import *
 import time
 
 troll = classes.Troll('The Cave Troll', 400, 3, 0.10, 0)
@@ -62,10 +61,10 @@ while troll.health > 0 and adventurer.health > 0:
             adventurer.buff_counter = 3
             time.sleep(1)
         else: 
+            print("You missed your chance to make a move")
             raise Exception
     
     except Exception:
-        # print('That is not a valid option')
         print("You missed your chance to make a move")
         time.sleep(1)
 

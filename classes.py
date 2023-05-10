@@ -2,6 +2,7 @@
 import random
 import time
 
+
 #Troll Class
 class Troll:
     def __init__(self, name, health, dmg_mult, crit_chance, buff_counter):
@@ -11,10 +12,6 @@ class Troll:
         self.crit_chance = crit_chance
         self.buff_counter = buff_counter
 
-    #Troll Turn
-
-    
-    
 
     #Troll Move Randomizer
     def random_action(self):
@@ -42,6 +39,8 @@ class Troll:
         print(f'{self.name} deals {int(damage)} damage')
         return int(damage)
     
+class Invalid_Input_Error(Exception):
+    pass
 
 #Adventurer Class
 class Adventurer:
@@ -51,9 +50,8 @@ class Adventurer:
         self.dmg_mult = dmg_mult
         self.crit_chance = crit_chance
         self.buff_counter = buff_counter
-
+# Move Select
     def move_select(self):
-        # Move Options    
         print('What do you want to do? (Input selected option number)')
         print('1. Attack')
         print('2. Drink Potion of Healing')
@@ -72,14 +70,15 @@ class Adventurer:
             elif choose_move == '3':
                 print('Your mana surges, temporarily amplifying the effects of your atacks ')
                 return choose_move
+        #Error for invalid option    
+            else: raise Invalid_Input_Error
             
-            else: raise Exception
-            
-        except Exception:
-            print('Invalid Option')
-            time.sleep(1)
+        except Invalid_Input_Error:
+                print('Invalid Option')
+                time.sleep(1)
         
-    
+
+
     #Attack Function    
     def attack(self):
         print('How would you like to attack?(Input selected option number)')
@@ -91,7 +90,7 @@ class Adventurer:
         global damage
         try:
             move = input()
-            #Attack Moves
+    #Attack Moveset
             if move == '1' :
                 print(f'{self.name} Casts fireball, englufing their enemy in flames')
                 damage = random.randint(65,80) * self.dmg_mult
@@ -103,11 +102,12 @@ class Adventurer:
             elif move == '3' :
                 print(f'Channeling more desperate, darker methods, {self.name} shaves off the life of their enemy, adding to their own')
                 damage = random.randint(60,80) * self.dmg_mult
-            else: raise Exception
+            #Error for Invalid Option 
+            else: raise Invalid_Input_Error
 
-        except (Exception):
-                    print("There was a mistake in your casting incantation, causing it to fizzle out")
-                    time.sleep(1)
+        except Invalid_Input_Error:
+                print("There was a mistake in your casting incantation, causing it to fizzle out")
+                time.sleep(1)
           
     #Critical Chance Functionality
         if random.random() < self.crit_chance:
@@ -136,11 +136,10 @@ class Adventurer:
         print(f'You heal yourself for {healing} health')
         time.sleep(1)
         return healing
-        
 
-    
-            
-    
+#Custom Errors
+
+
 
 
 
