@@ -1,7 +1,6 @@
 # Fight The Troll
 
 #Module Imports
-
 from fight_mechanics import *
 from time import sleep
 
@@ -11,7 +10,7 @@ adventurer = Adventurer(input ('What is your Adventurer name?' ), 150, 1, 0.2, 0
 
 #Program Interface Start
 
-
+#Name Input
 print(f'{adventurer.name}, Your encounter begins, fighting a Troll in the wild!') 
 sleep(1)
     
@@ -33,10 +32,7 @@ while adventurer.health > 0 and troll.health > 0:
 
     except KeyboardInterrupt:
         adventurer.retreat()
-    
-    # else:
-    #     print('fight over')
-    #     break
+
     
                 
 

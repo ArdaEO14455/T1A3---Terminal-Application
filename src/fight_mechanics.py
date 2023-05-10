@@ -1,6 +1,7 @@
 #Imported Modules
 import random
 from time import sleep
+import sys
 
 #Custom Errors
 class Invalid_Input_Error(Exception):
@@ -84,21 +85,27 @@ class Adventurer:
         try:
             selected_move = self.move_select()
             if selected_move == 1:
+                #Attack
                 adventurer_damage = self.attack()
                 other.health -= adventurer_damage
                 adventurer_healing = self.leech()
                 self.health += adventurer_healing
             elif selected_move == 2:
+                #Self-Heal
                 adventurer_healing = self.selfheal()
                 self.health += adventurer_healing
+                #Buff
             elif selected_move == 3:
                 self.buff_counter = 3
                 sleep(1)
+                #retreat
             elif selected_move == 4:
                 self.retreat()
-            else: 
-                print("You missed your chance to make a move")
-                raise AssertionError
+            # else: 
+                # print("You missed your chance to make a move")
+                # raise AssertionError
+        except KeyboardInterrupt:
+                self.retreat()
         
         except (AssertionError, UnboundLocalError, NameError):
             print("You missed your chance to make a move")
@@ -126,10 +133,14 @@ class Adventurer:
             elif choose_move == '3':
                 print('Your mana surges, temporarily amplifying the effects of your atacks ')
                 selected_move = 3
+        #Retreat
             elif choose_move == '4':
                 selected_move = 4
         #Error for invalid option    
             else: raise Invalid_Input_Error
+
+        except KeyboardInterrupt:
+                self.retreat()
             
         except Invalid_Input_Error:
                 print('Invalid Option')
@@ -165,9 +176,13 @@ class Adventurer:
             #Error for Invalid Option 
             else: raise Invalid_Input_Error
 
+        except KeyboardInterrupt:
+                self.retreat()
+        
         except Invalid_Input_Error:
                 print("There was a mistake in your casting incantation, causing it to fizzle out")
                 sleep(1)
+        
           
     #Critical Chance Functionality
         if random.random() < self.crit_chance:
@@ -201,6 +216,7 @@ class Adventurer:
 #Retreat
     def retreat(self):
         print('You narrowly escape into the wilderness')
+        sys.exit()
         raise SystemExit
     
 #Fight Recap
