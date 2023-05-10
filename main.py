@@ -8,12 +8,14 @@ from time import sleep
 troll = classes.Troll('The Cave Troll', 400, 3, 0.10, 0)
 adventurer = classes.Adventurer(input ('What is your Adventurer name?' ), 150, 1, 0.2, 0)
 #Program Interface Start
-try:
-    print(f'{adventurer.name}, Your encounter begins, fighting a Troll in the wild!') 
-    sleep(1)
-    
 
-#Turn Based Fight Begins
+
+print(f'{adventurer.name}, Your encounter begins, fighting a Troll in the wild!') 
+sleep(1)
+    
+def fight():
+
+    #Turn Based Fight Begins
     while troll.health > 0 and adventurer.health > 0:
         
             #Troll Turn
@@ -47,9 +49,7 @@ try:
                 sleep(1)
             else:
                 break
-
-        
-#---------------------------Adventurer Turn:-----------------------------------------------
+    #---------------------------Adventurer Turn:-----------------------------------------------
 
             #Move Select Prompt
             try:
@@ -69,11 +69,12 @@ try:
                     adventurer.retreat()
                 else: 
                     print("You missed your chance to make a move")
-                    raise Exception
+                    raise AssertionError
             
-            except Exception:
+            except (AssertionError, UnboundLocalError):
                 print("You missed your chance to make a move")
                 sleep(1)
+            
 
 
             #Health Recap
@@ -90,9 +91,7 @@ try:
         print('You have defeated the Troll, Congratulations!')
     elif adventurer.health <= 0:
         print('You have been defeated... Care to try again?')
-
-except KeyboardInterrupt:
-    adventurer.retreat
-        
-        
+    
+fight(adventurer, troll)
+    
 
