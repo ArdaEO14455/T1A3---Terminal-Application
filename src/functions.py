@@ -1,6 +1,7 @@
 #Imported Modules
 import random
 from time import sleep
+from sys import exit
 
 
 #Custom Errors
@@ -19,29 +20,17 @@ class Troll:
     def troll_turn(self, other):
             other.health -= self.random_action()
             sleep(1.5)
+            #Troll - Buff Counter
+            if self.buff_counter > 0:
+                self.dmg_mult = 1.3
+                self.crit_chance = 0.35
+                self.buff_counter -= 1
+                
+            else:
+                self.dmg_mult = 1
+                self.crit_chance = 0.2
 
-#Troll -  Roar & Self Heal
-    def buff_heal(self):
-        if random.random() < 0.15 and self.buff_counter == 0:
-            print("The Troll Roars, preparing to crush it's foe (Buff Lasts 3 Turns)")
-            self.buff_counter = 3
-            sleep(1.5)
-        elif random.random() < 0.1 and self.buff_counter > 0:
-            self.health += 50
-            sleep(1.5)
-            print('The troll devours a nearby morsel, restoring some of its health')
-
-        #Troll - Buff Counter
-        if self.buff_counter > 0:
-            self.dmg_mult = 1.3
-            self.crit_chance = 0.35
-            self.buff_counter -= 1
-            
-        else:
-            self.dmg_mult = 1
-            self.crit_chance = 0.2
-
-    #Troll Move Randomizer
+#Troll Move Randomizer
     def random_action(self):
         move_set = ['Throw Stone', 'Kick', 'Ground-Slam']
         move = random.choice(move_set)
@@ -67,8 +56,22 @@ class Troll:
         sleep(1)
         print(f'{self.name} deals {int(troll_damage)} damage')
         return int(troll_damage)
+
+#Troll -  Roar & Self Heal
+    def buff_heal(self):
+        if random.random() < 0.15 and self.buff_counter == 0:
+            print("The Troll Roars, preparing to crush it's foe (Buff Lasts 3 Turns)")
+            self.buff_counter = 3
+            sleep(1.5)
+        elif random.random() < 0.1 and self.buff_counter > 0:
+            self.health += 50
+            sleep(1.5)
+            print('The troll devours a nearby morsel, restoring some of its health')
+
         
-        # return int(damage)
+
+    
+        
 
 
 
@@ -95,23 +98,25 @@ class Adventurer:
         #Move Select
         try:
             selected_move = self.move_select()
-            if selected_move == 1:
+            if selected_move == '1':
                 #Attack
                 adventurer_damage = self.attack()
                 other.health -= adventurer_damage
                 adventurer_healing = self.leech()
                 self.health += adventurer_healing
-            elif selected_move == 2:
+            elif selected_move == '2':
                 #Self-Heal
                 adventurer_healing = self.selfheal()
                 self.health += adventurer_healing
                 #Buff
-            elif selected_move == 3:
-                self.buff_counter = 3
+            elif selected_move == '3':
+                print('Your mana surges, temporarily amplifying the effects of your atacks ')
+                self.buff()
                 sleep(1)
-                #retreat
-            elif selected_move == 4:
-                self.retreat()
+                #exit
+            elif selected_move == '4':
+                print('You narrowly escape into the wilderness')
+                exit()
             # else: 
                 # print("You missed your chance to make a move")
                 # raise AssertionError
@@ -132,32 +137,22 @@ class Adventurer:
     
     #Move Selector
         try:
-            choose_move = input()
+            selected_move = input()
+            
         #Attack - Access to Move-Set 
-            if choose_move == '1':
-                selected_move = 1
-                                   
-        #Healing Potion
-            elif choose_move == '2':
-                selected_move = 2
-        #Buff
-            elif choose_move == '3':
-                print('Your mana surges, temporarily amplifying the effects of your atacks ')
-                selected_move = 3
-        #Retreat
-            elif choose_move == '4':
-                selected_move = 4
+            if selected_move == ('1' or '2' or '3' or '4'):
+                return selected_move
+                
         #Error for invalid option    
             else: raise Invalid_Input_Error
 
         except KeyboardInterrupt:
-                self.retreat()
+                print(' - You narrowly escape into the wilderness')
+                exit()
             
         except Invalid_Input_Error:
                 print('Invalid Option')
                 sleep(1)
-        finally:
-            return selected_move
         
 
 
@@ -188,7 +183,9 @@ class Adventurer:
             else: raise Invalid_Input_Error
 
         except KeyboardInterrupt:
-                self.retreat()
+                print(' - You narrowly escape into the wilderness')
+                exit()
+                
         
         except Invalid_Input_Error:
                 print("There was a mistake in your casting incantation, causing it to fizzle out")
@@ -224,10 +221,10 @@ class Adventurer:
         sleep(1)
         return healing
 
-#Retreat
-    def retreat(self):
-        print('You narrowly escape into the wilderness')
-        raise SystemExit
+#Buff
+    def buff(self):
+        self.buff_counter = 3
+        sleep(1)
     
 #Fight Recap
 

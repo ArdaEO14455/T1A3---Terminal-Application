@@ -18,15 +18,24 @@ if you find yourself cornered, you also have the option during your turn to retr
 
 3- Next, we'll activate the virtual environment in the file and run the program within the environment. there is a script already ready to do this for you, just enter the following command:
 
-    bash ./troll_fight.sh
+    bash ./battle.sh
 
 4- That should begin the program with a prompt for you to enter your adventurer name, and begin the fight, Good Luck!
+
+* if you have trouble running the script, input the following commands:
+
+    * source .venv/bin/activate 
+        this will activate the virtual environment
+    * python3 src/battle.py
+        this will start the program in the virtual environment
+
 
 * The application should run smoothly with most operating systems or hardware, no minimum requirement for device specifications.
 
 * The program runs utilizes a number of modules within the python library to ensure the program and its testing works appropriately:
-    * 'time' Module
-    * 'random' Module
+    * 'time' module
+    * 'random' module
+    * 'sys' module
     * 'io' module
     * 'pytest' module
 
@@ -58,22 +67,34 @@ if you find yourself cornered, you also have the option during your turn to retr
 
 ## Testing ##
 
+
+to conduct testing you'll need to install a module manager. To begin with, make sure your command line is prefixed with the  - pip. but make sure your virtual environment is active, enter the following command:
+
+source .venv/bin/activate 
+
+check for the (.venv) prefix to your terminal input, as below:
+
+ACtivated Virtual Environment ![Active_.Venv] (docs/virtual.png)
+
+then, install the package manager pip using the link below:
+
+https://bootstrap.pypa.io/get-pip.py
+
 in your terminal, enter the appropriate command depending on your OS:
 
 Windows:    py -m pip install
 Unix/MacOS:     pip3 install pytest
 
-then, run the following command:
-
 pip3 install pytest
 
 this will install a testing package that will allow you to run some tests built into the program
 
-once the package is installed, input the following command:
+once the package is installed, input the following commands:
 
-pytest src/input_testing.py
+* to test the inputs for correct functioning: pytest src/input_testing.py
+* to test the functions in the program for correct functioning: pytest src/function.py
 
-this will run some tests to see if the functions within the program are working properly
+this will run some tests to see if the functions within the program are working properly. if tests fail, reinstall the program from scratch.
 
 
 ## Additional Information ##

@@ -1,8 +1,9 @@
 # Fight The Troll
 
 #Module Imports
-from fight_mechanics import *
+from functions import *
 from time import sleep
+from sys import exit
 
 #Instance Creation
 troll = Troll('The Cave Troll', 400, 1.25, 0.10, 0)
@@ -31,7 +32,8 @@ while adventurer.health > 0 and troll.health > 0:
             break
 
     except KeyboardInterrupt:
-        adventurer.retreat()
+        print(' - You narrowly escape into the wilderness')
+        exit()
 
     
                 
