@@ -29,7 +29,7 @@ You have a number of moves that you can make that will the fight, whether its di
 * Turn based fight-mechanic: The game runs on a back and forth between the troll making its move automatically and you selecting yours. After each turn, you'll see your updated hit points (HP). If at any stage either you or the troll have your HP reduced to zero, the fight will end, hopefully with you as the victor!
 
 * Character Stats: other than HP, both you and the troll have a number of stats that will impact the flow of the fight:
-        *
+    * Damage multiplier: This invisible stat will 
 
 * Move-Options: 
 
