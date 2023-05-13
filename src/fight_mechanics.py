@@ -1,7 +1,7 @@
 #Imported Modules
 import random
 from time import sleep
-import sys
+
 
 #Custom Errors
 class Invalid_Input_Error(Exception):
@@ -82,6 +82,17 @@ class Adventurer:
         self.buff_counter = buff_counter
 
     def adventurer_turn(self, other):    
+        
+        # Buff Counter
+        if self.buff_counter > 0:
+            self.dmg_mult = 1.3
+            self.crit_chance = 0.35
+            self.buff_counter -= 1
+
+        else:
+            self.dmg_mult = 1
+            self.crit_chance = 0.2
+        #Move Select
         try:
             selected_move = self.move_select()
             if selected_move == 1:
@@ -216,7 +227,6 @@ class Adventurer:
 #Retreat
     def retreat(self):
         print('You narrowly escape into the wilderness')
-        sys.exit()
         raise SystemExit
     
 #Fight Recap
