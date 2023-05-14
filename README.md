@@ -136,3 +136,5 @@ Overall Features Cards:
 ![Mechanics] docs/Battle_Mechanics.png
 
 Vimeo Presentation Link: https://vimeo.com/826609899?share=copy
+
+Trello Board Link: https://trello.com/invite/b/XILQ9E1q/ATTI8db443b400f5b75612b44f9bd467ce1f67AF74E5/terminal-application-fight-the-troll
