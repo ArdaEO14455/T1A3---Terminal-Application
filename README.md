@@ -99,8 +99,6 @@ this will run some tests to see if the functions within the program are working 
 
 ## Additional Information ##
 
-* Link to GitHub repository: https://github.com/ArdaEO14455/T1A3---Terminal-Application
-
 ### Implementation Plan ###
 
 1. I started with creating classes for both the troll and the adventurer, including their HP and other stats.
@@ -134,6 +132,8 @@ Overall Features Cards:
 ![Overall_Battle_Loop] docs/Battle Feature.png
 ![Class_Features] docs/object_classes_feature.png
 ![Mechanics] docs/Battle_Mechanics.png
+
+* Link to GitHub repository: https://github.com/ArdaEO14455/T1A3---Terminal-Application
 
 Vimeo Presentation Link: https://vimeo.com/826609899?share=copy
 
